@@ -13,20 +13,14 @@ const config = {
   measurementId: "G-T0EXK4Q09L"
 };
 
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
+const provider = new firebase.auth.GoogleAuthProvider();
 
-  export const auth = firebase.auth();
-  export const firestore = firebase.firestore();
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
+provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => firebase.auth().signInWithPopup(provider);
 
-  const provider = new firebase.auth.GoogleAuthProvider();
-  provider.setCustomParameters({ prompt:'select_account' });
+export default firebase;
 
-
-  export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-  export default firebase; 
-
-
-
-  
